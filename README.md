@@ -69,4 +69,19 @@ For each high-risk applicant, the top 3 SHAP-driving factors were extracted and 
 > "The borrower's debt-to-income ratio of 44.22% flags elevated risk, showing that a sizable share of their earnings is already tied up in debt payments. Moreover, the missing employment-length indicator combined with a monthly installment of $536.81 further heightens the risk assessment."
 
 Of 10,278 applicants flagged as high-risk by the tuned model, a representative sample of 100 — spanning both high-confidence and borderline risk cases — was processed through the explanation pipeline and cached for the dashboard.
+## Dashboard (Power BI)
+
+The model outputs, SHAP values, and LLM explanations are exported from Python to CSV and visualized in a single-page Power BI dashboard, including:
+
+- Headline KPIs (total loans, default rate, avg loan amount, avg DTI)
+- Loan outcome distribution and default rate by DTI bracket, loan term, and income verification status
+- A model comparison table (Logistic Regression vs. XGBoost vs. tuned XGBoost)
+- Global SHAP feature importance
+- An interactive **AI Risk Explanation** section — pick any high-risk applicant from a dropdown and see their plain-English risk explanation alongside a chart of the underlying SHAP factors.
+## Tech Stack
+
+- **Data & modeling:** Python, pandas, scikit-learn, XGBoost
+- **Explainability:** SHAP
+- **LLM explanation layer:** Groq API (`openai/gpt-oss-120b`)
+- **Dashboard:** Power BI
   
